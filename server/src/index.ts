@@ -1,24 +1,21 @@
 import express from "express";
+import dotenv from "dotenv";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
-import dotenv from "dotenv";
-import { readFileSync } from "fs";
 
-const typeDefs = readFileSync("./src/schema.graphql", { encoding: "utf-8" });
+import schemas from "./schemas";
+import resolvers from "./resolvers";
 
 const app = express();
 dotenv.config();
 
 const PORT: string = process.env.PORT || "3003";
 
-const resolvers = {
-  Query: {
-    getUser: () => [],
-  },
-};
-
 async function startServer() {
-  const graphqlServer = new ApolloServer({ resolvers, typeDefs });
+  const graphqlServer = new ApolloServer({
+    typeDefs: schemas,
+    resolvers,
+  });
   await graphqlServer.start();
 
   app.use(express.json());
