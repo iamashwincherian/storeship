@@ -8,6 +8,7 @@ import resolvers from "./resolvers";
 
 const app = express();
 dotenv.config();
+import "./db";
 
 const PORT: string = process.env.PORT || "3003";
 

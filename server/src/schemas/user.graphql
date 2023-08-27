@@ -6,4 +6,5 @@ type User {
 
 type Query {
   getUser(id: ID!): User
+  createUser(name: String, email: String): User
 }
