@@ -3,12 +3,12 @@ import dotenv from "dotenv";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 
+import "./db";
 import schemas from "./schemas";
 import resolvers from "./resolvers";
 
 const app = express();
 dotenv.config();
-import "./db";
 
 const PORT: string = process.env.PORT || "3003";
 

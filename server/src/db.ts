@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm";
+import dotenv from "dotenv";
 
+dotenv.config();
 const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env;
 
 export const db = new DataSource({
